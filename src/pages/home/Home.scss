@@ -1,0 +1,26 @@
+@import '../../designs/desinerContainer.scss';
+
+
+@mixin tableCollapse {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+    
+}
+
+
+.tableConteiner{
+    @include center;
+    @include tstart;
+    
+}
+
+
+
+table,th,td{
+    @include tableCollapse;
+    padding: 5px 10px;
+}
+
+
+
