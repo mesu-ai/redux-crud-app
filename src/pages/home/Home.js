@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { deleteBooks } from '../../app/features/books/deleteBookSlice';
 import { fetchBooks } from '../../app/features/books/getBookSlice';
 import './Home.scss';
 
@@ -10,8 +11,17 @@ const Home = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchBooks())
+        dispatch(fetchBooks());
     }, [dispatch]);
+
+
+    const handleDelete=(id)=>{
+
+        dispatch(deleteBooks(id));
+
+        console.log(id);
+
+    }
 
     return (
         <div>
@@ -28,21 +38,24 @@ const Home = () => {
             <div className='tableConteiner'>
             <table >
                 <thead>
+                    <tr>
                     <th>Id</th>
                     <th>Title</th>
                     <th colSpan={2}>Action</th>
 
+                    </tr>
+                    
                 </thead>
 
                 {books &&
-                    books.map(book =>
+                    books.map((book,index) =>
 
-                        <tbody >
+                        <tbody key={index}>
                             <tr >
                                 <td>{book?.id}</td>
                                 <td>{book?.title}</td>
                                 <td> <button className='updateBtn'>Update</button> </td>
-                                <td> <button className='deleteBtn'>Delete</button> </td>
+                                <td> <button onClick={()=>handleDelete(book?.id)} className='deleteBtn'>Delete</button> </td>
                             </tr>
                         </tbody>
 
