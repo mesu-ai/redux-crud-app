@@ -5,8 +5,6 @@
 
 }
 
-
-
 @mixin center {
     // position: absolute;
     // top: 50%;
@@ -16,4 +14,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin customBtn {
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid wheat;
+    
+
+    
 }

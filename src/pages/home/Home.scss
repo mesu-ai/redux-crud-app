@@ -1,4 +1,4 @@
-@import '../../designs/desinerContainer.scss';
+@import '../../designs/_mixin.scss';
 
 
 @mixin tableCollapse {
@@ -19,7 +19,20 @@
 
 table,th,td{
     @include tableCollapse;
-    padding: 5px 10px;
+    padding: 6px 20px;
+}
+
+.updateBtn{
+    @include customBtn;
+    background-color: $updateBtnBg;
+    color:$updateBtnT;
+
+}
+.deleteBtn{
+    @include customBtn;
+    background-color: $deleteBtnBg;
+    color:$updateBtnT;
+
 }
 
 

@@ -41,8 +41,8 @@ const Home = () => {
                             <tr >
                                 <td>{book?.id}</td>
                                 <td>{book?.title}</td>
-                                <td>Update</td>
-                                <td>Delete</td>
+                                <td> <button className='updateBtn'>Update</button> </td>
+                                <td> <button className='deleteBtn'>Delete</button> </td>
                             </tr>
                         </tbody>
 
