@@ -28,13 +28,15 @@
     text-align: start;
     font-size: medium;
     font-weight: 600;
+    margin-bottom: 5px;
 }
 
 @mixin input{
     display: block;
-    width: 100%;
     outline: none;
     border-radius: 12px;
-    padding: 8px 10px;
+    width:100%;
+    padding:8px 10px;
+ 
    
 }
