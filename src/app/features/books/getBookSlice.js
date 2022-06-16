@@ -59,7 +59,7 @@ const getBookSlice=createSlice({
             state.books=[action.payload];
             state.error=null;
 
-            console.log(state.books);
+            // console.log(state.books);
             alert('added');
         })
         builder.addCase(addBooks.rejected,(state,action)=>{
