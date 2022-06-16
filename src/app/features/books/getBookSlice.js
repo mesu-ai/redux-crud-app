@@ -5,6 +5,12 @@ import axios from "axios";
 export const fetchBooks=createAsyncThunk("books/fetchBooks",async()=>{
     const res=await axios.get("https://jsonplaceholder.typicode.com/posts");
     return res.data;
+});
+
+export const addBooks=createAsyncThunk("books/addBooks",async(data)=>{
+    const res=await axios.post('https://jsonplaceholder.typicode.com/posts',data);
+    return res.data;
+
 })
 
 export const deleteBooks= createAsyncThunk("books/deleteBooks",async(id)=>{
@@ -44,6 +50,22 @@ const getBookSlice=createSlice({
             state.books=[];
             state.error=action.payload;
         });
+
+        builder.addCase(addBooks.pending,(state)=>{
+            state.isLoading=true;
+        })
+        builder.addCase(addBooks.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.books=[action.payload];
+            state.error=null;
+
+            console.log(state.books);
+            alert('added');
+        })
+        builder.addCase(addBooks.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.error=action.payload;
+        })
 
         builder.addCase(deleteBooks.pending,(state)=>{
             state.isLoading=true;

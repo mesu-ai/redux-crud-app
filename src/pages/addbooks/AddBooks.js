@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBooks } from '../../app/features/books/getBookSlice';
 import './AddBooks.scss';
 
 const AddBooks = () => {
     const [addbooks,setAddbooks]=useState();
+    const dispatch= useDispatch();
 
     const handleOnBlur=(e)=>{
         const field=e.target.name;
@@ -16,7 +19,8 @@ const AddBooks = () => {
 
     const handleSubmit=(e)=>{
         console.log(addbooks);
-        
+        dispatch(addBooks(addBooks));
+
         e.preventDefault();
 
     }
