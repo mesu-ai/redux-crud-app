@@ -1,6 +1,7 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 export const fetchBooks=createAsyncThunk("books/fetchBooks",async()=>{
     const res=await axios.get("https://jsonplaceholder.typicode.com/posts");
     return res.data;
@@ -9,21 +10,16 @@ export const fetchBooks=createAsyncThunk("books/fetchBooks",async()=>{
 export const deleteBooks= createAsyncThunk("books/deleteBooks",async(id)=>{
 
     const res=await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
-
-    // console.log(id);
-
-    // console.log(res);
-
     return res.data;
 
 })
 
-export const updateBooks= createAsyncThunk("books/updateBooks",async(data)=>{
+export const updateBooks= createAsyncThunk("books/updateBooks",async(id,data)=>{
 
-    const res=await axios.put("https://jsonplaceholder.typicode.com/posts",data);
+    const res=await axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`,data);
 
-    console.log(res);
-    return res;
+     console.log(res);
+    return res.data;
 })
 
 const getBookSlice=createSlice({
@@ -48,9 +44,11 @@ const getBookSlice=createSlice({
             state.books=[];
             state.error=action.payload;
         });
+
         builder.addCase(deleteBooks.pending,(state)=>{
-            state.isLoading=false;
+            state.isLoading=true;
         });
+
         builder.addCase(deleteBooks.fulfilled,(state,action)=>{
             state.isLoading=false;
             const id  = action?.meta?.arg;
@@ -61,7 +59,33 @@ const getBookSlice=createSlice({
 
             }
         });
+
         builder.addCase(deleteBooks.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.error=action.payload;
+        });
+
+        builder.addCase(updateBooks.pending,(state)=>{
+            state.isLoading=true;
+
+        });
+
+        builder.addCase(updateBooks.fulfilled,(state,action)=>{
+            state.isLoading=false;
+
+            console.log(state,action);
+
+            const id= action?.meta?.arg;
+            if(id){
+                state.books=state.books.map((item)=>item.id===id ? action.payload : item);
+
+                alert('Updated');
+                
+            }
+            
+        });
+
+        builder.addCase(updateBooks.rejected,(state,action)=>{
             state.isLoading=false;
             state.error=action.payload;
         })

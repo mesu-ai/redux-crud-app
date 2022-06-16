@@ -12,7 +12,7 @@ const Home = () => {
     const navigate= useNavigate()
 
     //  const bookss =useSelector(state=>console.log(state));
-    console.log(books);
+    // console.log(books);
 
     const dispatch = useDispatch();
     useEffect(() => {

@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './UpdateBooks.scss';
 
 import {useLocation} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateBooks } from '../../app/features/books/getBookSlice';
 
 const UpdateBooks = () => {
 
     const location= useLocation();
+    const dispatch =useDispatch();
 
-    const handleOnBlur=()=>{
+    const [updateData,setUpdateData]=useState(location?.state?.book);
+
+    const handleOnBlur=(e)=>{
+        const field=e.target.name;
+        const value=e.target.value;
+
+        const newData={...updateData};
+        newData[field]=value;
+        setUpdateData(newData);
 
     }
 
     
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
+        // console.log(updateData);
+       
+        dispatch(updateBooks(updateData?.id,updateData));
+        
+        e.preventDefault();
 
 
     }
