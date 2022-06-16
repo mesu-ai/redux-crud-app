@@ -6,6 +6,18 @@ export const fetchBooks=createAsyncThunk("books/fetchBooks",async()=>{
     return res.data;
 })
 
+export const deleteBooks= createAsyncThunk("books/deleteBooks",async(id)=>{
+
+    const res=await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
+    console.log(id);
+
+    console.log(res);
+
+    return res.data;
+
+})
+
 const getBookSlice=createSlice({
     name:"book",
     initialState:{
@@ -27,7 +39,25 @@ const getBookSlice=createSlice({
             state.isLoading=false;
             state.books=[];
             state.error=action.payload;
+        });
+        builder.addCase(deleteBooks.pending,(state)=>{
+            state.isLoading=false;
+        });
+        builder.addCase(deleteBooks.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            const id  = action?.meta?.arg;
+
+            if(id){
+                state.books=state.books.filter((item)=>item.id !== id);
+                alert('done');
+
+            }
+        });
+        builder.addCase(deleteBooks.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.error=action.payload;
         })
+
     }
 });
 

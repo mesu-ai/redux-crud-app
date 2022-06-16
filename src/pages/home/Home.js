@@ -1,13 +1,15 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import { deleteBooks } from '../../app/features/books/deleteBookSlice';
-import { fetchBooks } from '../../app/features/books/getBookSlice';
+// import { deleteBooks } from '../../app/features/books/deleteBookSlice';
+import { deleteBooks, fetchBooks } from '../../app/features/books/getBookSlice';
 import './Home.scss';
 
 const Home = () => {
 
     const { isLoading, error, books } = useSelector(state => state.book);
-    // const books =useSelector(state=>console.log(state));
+    
+     const bookss =useSelector(state=>console.log(state));
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -15,11 +17,20 @@ const Home = () => {
     }, [dispatch]);
 
 
-    const handleDelete=(id)=>{
+    const handleDelete= async (id)=>{
 
-        dispatch(deleteBooks(id));
+    //    const res=await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+   
 
-        console.log(id);
+    //   if(res.status===200){
+    //         const newBooks=books.filter((item)=>item.id !== id);
+    //         console.log({newBooks,res});
+    //         alert('done');
+
+
+    // }
+
+         dispatch(deleteBooks(id));
 
     }
 
