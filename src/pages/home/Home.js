@@ -18,8 +18,9 @@ const Home = () => {
         dispatch(fetchBooks());
     }, [dispatch]);
 
-    const handleAddUser=()=>{
-        
+    const handleAddBook=()=>{
+        navigate('/addbooks');
+
     }
 
 
@@ -39,8 +40,8 @@ const Home = () => {
     return (
         <div>
             <div>
-                <h1>User Table</h1>
-                <button onClick={handleAddUser} className='addUserBtn'>Add User</button>
+                <h1>Book Table</h1>
+                <button onClick={handleAddBook} className='addBtn'>Add Book</button>
             </div>
 
             {isLoading &&
