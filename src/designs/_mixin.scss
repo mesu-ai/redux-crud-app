@@ -21,6 +21,20 @@
     border-radius: 12px;
     border: 1px solid wheat;
     
+}
 
-    
+@mixin label{
+    display: block;
+    text-align: start;
+    font-size: medium;
+    font-weight: 600;
+}
+
+@mixin input{
+    display: block;
+    width: 100%;
+    outline: none;
+    border-radius: 12px;
+    padding: 8px 10px;
+   
 }

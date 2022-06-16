@@ -9,26 +9,26 @@
 }
 
 
-.tableConteiner{
+#userTable{
     @include center;
     @include tstart;
+
+    table,th,td{
+        @include tableCollapse;
+        padding: 6px 20px;
+    }
     
 }
 
 
 
-table,th,td{
-    @include tableCollapse;
-    padding: 6px 20px;
-}
-
-.updateBtn{
+#userTable .updateBtn{
     @include customBtn;
     background-color: $updateBtnBg;
     color:$updateBtnT;
 
 }
-.deleteBtn{
+#userTable .deleteBtn{
     @include customBtn;
     background-color: $deleteBtnBg;
     color:$updateBtnT;

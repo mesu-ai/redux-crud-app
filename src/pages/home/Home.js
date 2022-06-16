@@ -1,15 +1,18 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
 // import { deleteBooks } from '../../app/features/books/deleteBookSlice';
-import { deleteBooks, fetchBooks } from '../../app/features/books/getBookSlice';
+import { deleteBooks, fetchBooks, updateBooks } from '../../app/features/books/getBookSlice';
 import './Home.scss';
 
 const Home = () => {
 
     const { isLoading, error, books } = useSelector(state => state.book);
-    
-     const bookss =useSelector(state=>console.log(state));
+    const navigate= useNavigate()
+
+    //  const bookss =useSelector(state=>console.log(state));
+    console.log(books);
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -17,20 +20,16 @@ const Home = () => {
     }, [dispatch]);
 
 
-    const handleDelete= async (id)=>{
+    const handleDelete = async (id) => {
 
-    //    const res=await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
-   
+        dispatch(deleteBooks(id));
 
-    //   if(res.status===200){
-    //         const newBooks=books.filter((item)=>item.id !== id);
-    //         console.log({newBooks,res});
-    //         alert('done');
+    }
 
-
-    // }
-
-         dispatch(deleteBooks(id));
+    const handleUpdate = (data) => {
+        // console.log(data);
+        navigate('/updatebooks',{state:{'book':data}})
+        
 
     }
 
@@ -40,44 +39,43 @@ const Home = () => {
 
             {isLoading &&
                 <h5>Loading...</h5>
-
             }
 
             {error &&
                 <h5>{error.message}</h5>
             }
-            <div className='tableConteiner'>
-            <table >
-                <thead>
-                    <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th colSpan={2}>Action</th>
+            <div id='userTable'>
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th colSpan={2}>Action</th>
 
-                    </tr>
-                    
-                </thead>
+                        </tr>
 
-                {books &&
-                    books.map((book,index) =>
+                    </thead>
 
-                        <tbody key={index}>
-                            <tr >
-                                <td>{book?.id}</td>
-                                <td>{book?.title}</td>
-                                <td> <button className='updateBtn'>Update</button> </td>
-                                <td> <button onClick={()=>handleDelete(book?.id)} className='deleteBtn'>Delete</button> </td>
-                            </tr>
-                        </tbody>
+                    {books &&
+                        books.map((book, index) =>
 
-
+                            <tbody key={index}>
+                                <tr >
+                                    <td>{book?.id}</td>
+                                    <td>{book?.title}</td>
+                                    <td> <button onClick={() => handleUpdate(book)} className='updateBtn'>Update</button> </td>
+                                    <td> <button onClick={() => handleDelete(book?.id)} className='deleteBtn'>Delete</button> </td>
+                                </tr>
+                            </tbody>
 
 
-                    )}
-            </table>
+
+
+                        )}
+                </table>
 
             </div>
-            
+
 
         </div>
     );

@@ -10,12 +10,20 @@ export const deleteBooks= createAsyncThunk("books/deleteBooks",async(id)=>{
 
     const res=await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
-    console.log(id);
+    // console.log(id);
 
-    console.log(res);
+    // console.log(res);
 
     return res.data;
 
+})
+
+export const updateBooks= createAsyncThunk("books/updateBooks",async(data)=>{
+
+    const res=await axios.put("https://jsonplaceholder.typicode.com/posts",data);
+
+    console.log(res);
+    return res;
 })
 
 const getBookSlice=createSlice({

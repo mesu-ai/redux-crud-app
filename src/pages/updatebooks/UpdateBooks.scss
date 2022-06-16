@@ -1,0 +1,28 @@
+@import '../../designs/mixin';
+
+#updateBooks{
+    @include center;
+    flex-direction: column;
+
+}
+
+#updateBooks .formContainer{
+
+    width: 50%;
+}
+
+#updateBooks .inputLabel{
+    @include label;
+
+}
+#updateBooks .inputField{
+    @include input;
+    
+}
+
+#updateBooks .submitBtn{
+    @include customBtn;
+    margin-top: 10px;
+    background-color: green;
+    color: white;
+}
