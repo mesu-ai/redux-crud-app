@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBooks } from '../../app/features/books/getBookSlice';
+import { addBooks } from '../../app/features/books/bookSlice';
 import './AddBooks.scss';
 
 const AddBooks = () => {
@@ -26,7 +26,7 @@ const AddBooks = () => {
     }
 
     return (
-        <div>
+        <div id='updateBooks'>
             <h2>Add books</h2>
 
             <form className='formContainer' onSubmit={handleSubmit}>

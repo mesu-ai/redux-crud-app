@@ -28,7 +28,7 @@ export const updateBooks= createAsyncThunk("books/updateBooks",async(id,data)=>{
     return res.data;
 })
 
-const getBookSlice=createSlice({
+const bookSlice=createSlice({
     name:"book",
     initialState:{
         books:[],
@@ -56,13 +56,14 @@ const getBookSlice=createSlice({
         })
         builder.addCase(addBooks.fulfilled,(state,action)=>{
             state.isLoading=false;
-            state.books=[action.payload];
+            state.books=[...state.books,action.payload];
             state.error=null;
 
-            // console.log(state.books);
-            alert('added');
+             console.log(action.payload);
+            // alert('added');
         })
         builder.addCase(addBooks.rejected,(state,action)=>{
+
             state.isLoading=false;
             state.error=action.payload;
         })
@@ -116,4 +117,4 @@ const getBookSlice=createSlice({
 });
 
 
-export default getBookSlice.reducer;
+export default bookSlice.reducer;

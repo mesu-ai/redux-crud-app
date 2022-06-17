@@ -3,7 +3,7 @@ import './UpdateBooks.scss';
 
 import {useLocation} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateBooks } from '../../app/features/books/getBookSlice';
+import { updateBooks } from '../../app/features/books/bookSlice';
 
 const UpdateBooks = () => {
 
@@ -35,7 +35,7 @@ const UpdateBooks = () => {
    
     return (
         <div id='updateBooks'>
-            <h5>Update books</h5>
+            <h2>Update books</h2>
 
             <form className='formContainer' onSubmit={handleSubmit}>
                 <div>

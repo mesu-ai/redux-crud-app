@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import deleteBookSlice from '../features/books/deleteBookSlice';
 
-import getBookSlice from "../features/books/getBookSlice";
+import bookSlice from "../features/books/bookSlice";
 
 const store=configureStore({
     reducer:{
-        book:getBookSlice,
-        // delete:deleteBookSlice
+        book:bookSlice,
     }
 });
 

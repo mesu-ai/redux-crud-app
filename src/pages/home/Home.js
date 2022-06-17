@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
-import { deleteBooks, fetchBooks, updateBooks } from '../../app/features/books/getBookSlice';
+import { deleteBooks, fetchBooks, updateBooks } from '../../app/features/books/bookSlice';
+import AddBooks from '../addbooks/AddBooks';
+import UpdateBooks from '../updatebooks/UpdateBooks';
 import './Home.scss';
 
 const Home = () => {
@@ -41,6 +43,12 @@ const Home = () => {
         <div>
             <div>
                 <h1>Book Table</h1>
+                <div className='bookContainer'>
+                <AddBooks/>
+                <UpdateBooks/>
+
+                </div>
+                
                 <button onClick={handleAddBook} className='addBtn'>Add Book</button>
             </div>
 
