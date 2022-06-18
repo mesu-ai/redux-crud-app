@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import stationSlice from '../features/station/stationSlice';
 
-import bookSlice from "../features/books/bookSlice";
+
 
 const store=configureStore({
     reducer:{
-        book:bookSlice,
+        station:stationSlice,
     }
 });
 
