@@ -46,9 +46,9 @@ export const deleteStations= createAsyncThunk("station/deleteStations",async(id)
 
 })
 
-export const updateStations= createAsyncThunk("station/updateStations",async(id,{data})=>{
+export const updateStations= createAsyncThunk("station/updateStations",async(data,id)=>{
 
-    console.log(id,data);
+    console.log(data);
 
    try {
     const res=await axios.put(`https://immense-fjord-26417.herokuapp.com/stations/${id}`,data);
