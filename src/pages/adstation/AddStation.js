@@ -19,7 +19,7 @@ const AddStation = () => {
 
     const handleSubmit=(e)=>{
          console.log(addstations);
-        dispatch(addStation())
+        dispatch(addStation(addstations))
 
         e.preventDefault();
 

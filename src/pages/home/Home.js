@@ -12,7 +12,7 @@ const Home = () => {
     const { isLoading, error, stations } = useSelector(state => state.station);
     const navigate = useNavigate()
 
-     const bookss =useSelector(state=>console.log(state));
+    //  const bookss =useSelector(state=>console.log(state));
     //  console.log(stations);
 
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Home = () => {
 
     const handleUpdate = (data) => {
         // console.log(data);
-        navigate('/updatebooks', { state: { 'book': data } })
+        navigate('/updatebooks', { state: { 'station': data } })
 
         // setUpdateItem(data);
 

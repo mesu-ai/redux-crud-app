@@ -11,7 +11,7 @@ const UpdateStation = ({ updateItem = {} }) => {
      const location= useLocation();
     const dispatch = useDispatch();
 
-    const [updateData, setUpdateData] = useState(location?.state?.book);
+    const [updateData, setUpdateData] = useState(location?.state?.station);
 
     // useEffect(() => {
     //     setUpdateData(updateItem);
@@ -32,9 +32,9 @@ const UpdateStation = ({ updateItem = {} }) => {
 
         if (updateData) {
 
-            console.log(updateData);
+             console.log(updateData);
 
-            dispatch(updateStations(updateData?.id,updateData));
+            dispatch(updateStations(updateData?._id,updateData));
             
             
 
@@ -60,7 +60,7 @@ const UpdateStation = ({ updateItem = {} }) => {
                     <input className='inputField' placeholder='Enter Name'
                     name='name'
                     onBlur={handleOnBlur}
-                    defaultValue={location?.state?.book?.name || ''}
+                    defaultValue={location?.state?.station?.name || ''}
                 
                     ></input>
 
@@ -70,7 +70,7 @@ const UpdateStation = ({ updateItem = {} }) => {
                     <input className='inputField' placeholder='Enter Frequency' 
                     name='frequency'
                     onBlur={handleOnBlur}
-                    defaultValue={location?.state?.book?.frequency || ''}
+                    defaultValue={location?.state?.station?.frequency || ''}
                     
                     ></input>
                 </div>

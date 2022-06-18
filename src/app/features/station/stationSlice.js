@@ -6,8 +6,6 @@ export const fetchStations=createAsyncThunk("station/fetchStation",async()=>{
     try {
         const res=await axios.get('https://immense-fjord-26417.herokuapp.com/stations');
 
-        console.log(res)
-
         return res.data;
         
     } catch (error) {
@@ -48,13 +46,13 @@ export const deleteStations= createAsyncThunk("station/deleteStations",async(id)
 
 })
 
-export const updateStations= createAsyncThunk("station/updateStations",async(id,data)=>{
+export const updateStations= createAsyncThunk("station/updateStations",async(id,{data})=>{
 
-    console.log(data)
+    console.log(id,data);
 
    try {
     const res=await axios.put(`https://immense-fjord-26417.herokuapp.com/stations/${id}`,data);
-    console.log(res);
+    // console.log(res);
     return res.data;
     
    } catch (error) {
@@ -130,8 +128,9 @@ const stationSlice=createSlice({
             state.isLoading=false;
 
             const id= action?.meta?.arg;
+            console.log(action);
             if(id){
-                state.stations=state.stations.map((item)=>item.id===id ? action.payload : item);
+                state.stations=state.stations.map((item)=>item._id===id ? action.payload : item);
                 
             }
             
