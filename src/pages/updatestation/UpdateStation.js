@@ -32,10 +32,9 @@ const UpdateStation = ({ updateItem = {} }) => {
 
         if (updateData) {
 
-             console.log(updateData._id);
-             const id=updateData._id;
+            //  console.log(updateData._id);
 
-            dispatch(updateStations(updateData,id));
+            dispatch(updateStations(updateData));
             
             
 
