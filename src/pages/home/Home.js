@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
 import { deleteStations, fetchStations } from '../../app/features/station/stationSlice';
@@ -7,6 +8,8 @@ import UpdateStation from '../updatestation/UpdateStation';
 import './Home.scss';
 
 const Home = () => {
+
+    const {t}=useTranslation();
 
     // const [updateItem, setUpdateItem] = useState({})
 
@@ -44,7 +47,7 @@ const Home = () => {
     return (
         <div>
             <div>
-                <h1>Station Table</h1>
+                <h1>{t("Station Table")}</h1>
                 <div className='bookContainer'>
                     <AddStation />
                     {/* <UpdateBooks updateItem={updateItem}/> */}

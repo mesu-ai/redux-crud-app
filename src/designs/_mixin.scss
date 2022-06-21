@@ -35,8 +35,10 @@
     display: block;
     outline: none;
     border-radius: 12px;
-    width:92%;
-    padding:8px 10px;
+    // max-width:100%;
+    width: 100%;
+    // padding:8px 10px;
+    position: relative;
  
    
 }

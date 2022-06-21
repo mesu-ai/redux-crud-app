@@ -9,9 +9,12 @@
 #updateBooks .formContainer{
 
     width: 50%;
+    margin: 0 auto;
     border-radius: 12px;
     border: 1px solid black;
-    padding: 20px 25px;
+    // padding: 20px 25px;
+    overflow: hidden;
+    display: block !important;
 
 }
 
