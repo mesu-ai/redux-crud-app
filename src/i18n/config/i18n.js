@@ -6,8 +6,8 @@ const resources = {
     en: {
         translation: require('../locales/en/translations.json'),
     },
-    ar: {
-        translation: require('../locales/ar/translations.json'),
+    bn: {
+        translation: require('../locales/bn/translations.json'),
     }
 };
 

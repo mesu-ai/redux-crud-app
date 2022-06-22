@@ -1,3 +1,5 @@
+@import '../designs/mixin';
+
 ul{
     
     display: flex;
@@ -11,4 +13,11 @@ ul{
         margin: 10px 15px;
         font-size: 18px;
     }
+}
+
+#navbar .languagBtn {
+    // @include positionEnd;
+    text-align: end;
+    float:inline-end
+    
 }

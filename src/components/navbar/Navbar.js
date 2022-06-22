@@ -12,25 +12,21 @@ const Navbar = () => {
     };
 
     return (
-        <div>
+        <div id='navbar'>
             <ul>
                 <Link className='nav-item' to='/home'>Home</Link>
                 <Link className='nav-item' to='/addbooks'>Add Books</Link>
                 <Link className='nav-item' to='/updatebooks'>Update Books</Link>
 
-
-                <div>
+            </ul>
+            <div className='languagBtn'>
                     <button type="button" onClick={() => changeLanguage('en')}>
-                        en
+                        EN
                     </button>
-                    <button type="button" onClick={() => changeLanguage('ar')}>
-                        ar
+                    <button type="button" onClick={() => changeLanguage('bn')}>
+                        BN
                     </button>
                 </div>
-
-
-
-            </ul>
 
         </div>
     );
