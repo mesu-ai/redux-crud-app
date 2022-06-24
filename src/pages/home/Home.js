@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
 import { deleteStations, fetchStations, searchStation } from '../../app/features/station/stationSlice';
-import AddStation from '../adstation/AddStation';
-import UpdateStation from '../updatestation/UpdateStation';
 import './Home.scss';
 
 const Home = () => {
@@ -20,17 +18,15 @@ const Home = () => {
     //  console.log(stations);
 
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchStations());
-    }, [dispatch]);
-
 
     const handleSearch=(e)=>{
         const value=e.target.value;
         dispatch(searchStation(value));
         // console.log(value);
 
-    }
+    };
+
+    
 
     const handleAddStation = () => {
         navigate('/addbooks');
@@ -52,6 +48,10 @@ const Home = () => {
 
     }
 
+    useEffect(() => {
+        dispatch(fetchStations());
+    }, [dispatch]);
+
     return (
         <div>
             <div style={{marginBottom:'30px'}}>
@@ -72,7 +72,7 @@ const Home = () => {
                         <tr className='head1Container'>
                             <th colSpan={2} className='searchContainer'>
                                 <input className='searchField' type="search" name="search"
-                                placeholder='Search here...' id=""
+                                placeholder={t('Search here...')} id=""
                                 onChange={handleSearch} />
                             </th>
                             <th colSpan={3} className='addStationContainer'>

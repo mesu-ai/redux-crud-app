@@ -21,7 +21,8 @@ const AddStation = () => {
 
     const handleSubmit=(e)=>{
          console.log(addstations);
-        dispatch(addStation(addstations))
+        dispatch(addStation(addstations));
+        e.target.reset();
 
         e.preventDefault();
 

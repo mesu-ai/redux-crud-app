@@ -24,7 +24,7 @@ export const addStation=createAsyncThunk("station/addStation",async(data)=>{
     try {
         const res=await axios.post('https://immense-fjord-26417.herokuapp.com/stations',data);
     
-        // alert('added new');
+         alert('added new');
         
         return res.data;
     } catch (error) {
@@ -54,6 +54,7 @@ export const updateStations= createAsyncThunk("station/updateStations",async(dat
    try {
     const res=await axios.put(`https://immense-fjord-26417.herokuapp.com/stations/${data._id}`,data);
     // console.log(res);
+    alert('updated');
     return res.data;
     
    } catch (error) {
@@ -65,6 +66,7 @@ const stationSlice=createSlice({
     name:"station",
     initialState:{
         stations:[],
+        filterData:[],
         isLoading:false,
         error:null
 
@@ -72,8 +74,7 @@ const stationSlice=createSlice({
     reducers:{
         searchStation: (state,action)=>{
 
-            console.log(action.payload);
-            state.stations=state.stations.filter(station=>station?.name.toLowerCase().includes(action.payload.toLowerCase()));
+            state.stations=state.filterData.filter(station=>station?.name.toLowerCase().includes(action.payload.toLowerCase()));
         }
 
     },
@@ -86,6 +87,7 @@ const stationSlice=createSlice({
         builder.addCase(fetchStations.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.stations=action.payload;
+            state.filterData=action.payload;
         });
         builder.addCase(fetchStations.rejected,(state,action)=>{
             state.isLoading=false;
@@ -101,8 +103,7 @@ const stationSlice=createSlice({
             state.stations=[...state.stations,action.payload];
             state.error=null;
 
-             console.log(action);
-            // alert('added');
+            // alert('added')
         })
         builder.addCase(addStation.rejected,(state,action)=>{
 
@@ -120,6 +121,9 @@ const stationSlice=createSlice({
 
             if(id){
                 state.stations=state.stations.filter((item)=>item._id !== id);
+                
+                state.filterData=state.filterData.filter((item)=>item._id !== id);
+                // state.filterData.push(state.stations);
                
             }
         });
