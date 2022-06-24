@@ -4,11 +4,13 @@ import './UpdateStation.scss';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateStations } from '../../app/features/station/stationSlice';
+import { useTranslation } from 'react-i18next';
 
 
 const UpdateStation = ({ updateItem = {} }) => {
+    const { t } = useTranslation();
 
-     const location= useLocation();
+    const location = useLocation();
     const dispatch = useDispatch();
 
     const [updateData, setUpdateData] = useState(location?.state?.station);
@@ -35,8 +37,8 @@ const UpdateStation = ({ updateItem = {} }) => {
             //  console.log(updateData._id);
 
             dispatch(updateStations(updateData));
-            
-            
+
+
 
         }
 
@@ -49,33 +51,33 @@ const UpdateStation = ({ updateItem = {} }) => {
 
 
     return (
-        <div id='updateBooks' style={{ backgroundColor: 'yellow' }}>
-            <h2>Update Station</h2>
+        <div id='updateBooks' style={{ backgroundColor: '' }}>
+            <h2>{t("Station Update Table")}</h2>
 
             <form className='formContainer' onSubmit={handleSubmit}>
-                
-                
+
+
                 <div>
-                    <label className='inputLabel'>Station Name</label>
+                    <label className='inputLabel'>{t("Station Name")}</label>
                     <input className='inputField' placeholder='Enter Name'
-                    name='name'
-                    onBlur={handleOnBlur}
-                    defaultValue={location?.state?.station?.name || ''}
-                
+                        name='name'
+                        onBlur={handleOnBlur}
+                        defaultValue={location?.state?.station?.name || ''}
+
                     ></input>
 
                 </div>
-                <div style={{marginTop:'10px'}}>
-                    <label className='inputLabel'>Station Frequency</label>
-                    <input className='inputField' placeholder='Enter Frequency' 
-                    name='frequency'
-                    onBlur={handleOnBlur}
-                    defaultValue={location?.state?.station?.frequency || ''}
-                    
+                <div style={{ marginTop: '10px' }}>
+                    <label className='inputLabel'>{t("Station Frequency")}</label>
+                    <input className='inputField' placeholder='Enter Frequency'
+                        name='frequency'
+                        onBlur={handleOnBlur}
+                        defaultValue={location?.state?.station?.frequency || ''}
+
                     ></input>
                 </div>
 
-                <button className='submitBtn' type='submit'>Add Station</button>
+                <button className='submitBtn' type='submit'>{t("Update Station")}</button>
 
             </form>
 

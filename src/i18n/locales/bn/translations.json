@@ -1,3 +1,16 @@
 {
-    "Station Table":"স্টেশন টেবিল"
+    "Loading...":"অপেক্ষা করুন....",
+    "Station Table":"স্টেশন টেবিল",
+    "Title":"শিরোনাম",
+    "Frequency":"ফ্রিকোয়েন্সি",
+    "Action":"নির্বাচন",
+    "Update":"হালনাগাদ",
+    "Delete":"মুছে দিন",
+    "Add Station":"স্টেশন যোগ করুন",
+    "Station Name":"স্টেশনের নাম",
+    "Station Frequency":"স্টেশন ফ্রিকোয়েন্সি",
+    "Add New Station":"নতুন স্টেশন যোগ করুন",
+    "Add Station Table":"নতুন স্টেশন যোগ টেবিল",
+    "Station Update Table":"স্টেশন আপডেট টেবিল",
+    "Update Station":"হালনাগাদ করুন"
 }

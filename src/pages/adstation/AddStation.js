@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { addStation } from '../../app/features/station/stationSlice';
 import './AddStation.scss';
 
 const AddStation = () => {
+    const {t} =useTranslation();
     const [addstations,setAddStations]=useState();
     const dispatch= useDispatch();
 
@@ -26,14 +28,14 @@ const AddStation = () => {
     }
 
     return (
-        <div id='updateBooks' style={{backgroundColor:'red'}}>
-            <h2>Add Station</h2>
+        <div id='updateBooks' style={{backgroundColor:''}}>
+            <h2>{t("Add Station Table")}</h2>
 
             <form className='formContainer' onSubmit={handleSubmit}>
                 
                 
                 <div>
-                    <label className='inputLabel'>Station Name</label>
+                    <label className='inputLabel'>{t("Station Name")}</label>
                     <input className='inputField' placeholder='Enter Name'
                     name='name'
                     onBlur={handleOnBlur}
@@ -42,7 +44,7 @@ const AddStation = () => {
 
                 </div>
                 <div style={{marginTop:'10px'}}>
-                    <label className='inputLabel'>Station Frequency</label>
+                    <label className='inputLabel'>{t("Station Frequency")}</label>
                     <input className='inputField' placeholder='Enter Frequency' 
                     name='frequency'
                     onBlur={handleOnBlur}
@@ -50,7 +52,7 @@ const AddStation = () => {
                     ></input>
                 </div>
 
-                <button className='submitBtn' type='submit'>Add Station</button>
+                <button className='submitBtn' type='submit'>{t("Add Station")}</button>
 
             </form>
             

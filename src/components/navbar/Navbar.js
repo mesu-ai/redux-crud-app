@@ -20,10 +20,10 @@ const Navbar = () => {
 
             </ul>
             <div className='languagBtn'>
-                    <button type="button" onClick={() => changeLanguage('en')}>
+                    <button className={`${i18n.language=== 'en' ? 'active' : ''}`} type="button" onClick={() => changeLanguage('en')}>
                         EN
                     </button>
-                    <button type="button" onClick={() => changeLanguage('bn')}>
+                    <button className={`${i18n.language=== 'bn' ? 'active' : ''}`} type="button" onClick={() => changeLanguage('bn')}>
                         BN
                     </button>
                 </div>

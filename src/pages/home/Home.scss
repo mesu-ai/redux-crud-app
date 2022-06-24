@@ -2,13 +2,13 @@
 
 
 @mixin tableCollapse {
-    border: 1px solid black;
+    // border: 1px solid black;
     border-collapse: collapse;
 
-    
+
 }
 
-.bookContainer{
+.bookContainer {
     // display: grid;
     // grid-template-columns: repeat(2,1fr);
     margin: 30px auto;
@@ -16,40 +16,80 @@
 
 
 
-.addBtn{
+.addBtn {
     @include customBtn;
     background-color: rgb(13, 13, 165);
     color: white;
     margin-bottom: 10px;
 }
 
-#userTable{
+#userTable {
     @include center;
     @include tstart;
     margin-bottom: 30px;
 
-    table,th,td{
+    table,
+    th,
+    td {
         @include tableCollapse;
         padding: 6px 20px;
+
+        tr,
+        th,
+        td {
+
+            border: 1px solid black;
+        }
     }
-    
+
+}
+
+
+#userTable .head1Container {
+    border: 0;
+
+    .searchContainer,
+    .addStationContainer {
+        border: 0;
+        padding-bottom: 10px;
+
+    }
+
+    .searchContainer {
+        padding-left: 0;
+
+        .searchField {
+            @include input;
+            background-color: cornsilk;
+            font-size: 16px;
+
+        }
+
+    }
+
+    .addStationContainer .tableAdd{
+        float: right;
+    }
+
+
+
+
+
 }
 
 
 
-#userTable .updateBtn{
+
+#userTable .updateBtn {
     @include customBtn;
     background-color: $updateBtnBg;
-    color:$updateBtnT;
+    color: $updateBtnT;
 
 }
-#userTable .deleteBtn{
+
+#userTable .deleteBtn {
     @include customBtn;
     background-color: $deleteBtnBg;
-    color:$updateBtnT;
+    color: $updateBtnT;
 
 }
-
-
-
-

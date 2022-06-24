@@ -9,7 +9,7 @@ import './Home.scss';
 
 const Home = () => {
 
-    const {t}=useTranslation();
+    const { t } = useTranslation();
 
     // const [updateItem, setUpdateItem] = useState({})
 
@@ -24,10 +24,10 @@ const Home = () => {
         dispatch(fetchStations());
     }, [dispatch]);
 
-    // const handleAddBook = () => {
-    //     navigate('/addbooks');
+    const handleAddStation = () => {
+        navigate('/addbooks');
 
-    // }
+    }
 
 
     const handleDelete = async (id) => {
@@ -46,20 +46,13 @@ const Home = () => {
 
     return (
         <div>
-            <div>
+            <div style={{marginBottom:'30px'}}>
                 <h1>{t("Station Table")}</h1>
-                <div className='bookContainer'>
-                    <AddStation />
-                    {/* <UpdateBooks updateItem={updateItem}/> */}
-                    
 
-                </div>
-
-                {/* <button onClick={handleAddBook} className='addBtn'>Add Book</button> */}
             </div>
 
             {isLoading &&
-                <h5>Loading...</h5>
+                <h5>{t("Loading...")}</h5>
             }
 
             {error &&
@@ -68,11 +61,21 @@ const Home = () => {
             <div id='userTable'>
                 <table >
                     <thead>
+                        <tr className='head1Container'>
+                            <th colSpan={2} className='searchContainer'>
+                                <input className='searchField' type="search" name="search"
+                                placeholder='Search here...' id="" />
+                            </th>
+                            <th colSpan={3} className='addStationContainer'>
+                                <button style={{marginBottom:0}} onClick={handleAddStation} className='addBtn tableAdd'>{t("Add New Station")}</button>
+                            </th>
+
+                        </tr>
                         <tr>
-                            <th>Id</th>
-                            <th>Title</th>
-                            <th>Frequency</th>
-                            <th colSpan={2}>Action</th>
+                            <th>#</th>
+                            <th>{t("Title")}</th>
+                            <th>{t("Frequency")}</th>
+                            <th colSpan={2}>{t("Action")}</th>
 
                         </tr>
 
@@ -83,11 +86,11 @@ const Home = () => {
 
                             <tbody key={index}>
                                 <tr >
-                                    <td>{station?._id}</td>
+                                    <td>{index+1}</td>
                                     <td>{station?.name}</td>
                                     <td>{station?.frequency}</td>
-                                    <td> <button onClick={() => handleUpdate(station)} className='updateBtn'>Update</button> </td>
-                                    <td> <button onClick={() => handleDelete(station?._id)} className='deleteBtn'>Delete</button> </td>
+                                    <td> <button onClick={() => handleUpdate(station)} className='updateBtn'>{t("Update")}</button> </td>
+                                    <td> <button onClick={() => handleDelete(station?._id)} className='deleteBtn'>{t("Delete")}</button> </td>
                                 </tr>
                             </tbody>
 
