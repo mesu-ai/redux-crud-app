@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
-import { deleteStations, fetchStations } from '../../app/features/station/stationSlice';
+import { deleteStations, fetchStations, searchStation } from '../../app/features/station/stationSlice';
 import AddStation from '../adstation/AddStation';
 import UpdateStation from '../updatestation/UpdateStation';
 import './Home.scss';
@@ -23,6 +23,14 @@ const Home = () => {
     useEffect(() => {
         dispatch(fetchStations());
     }, [dispatch]);
+
+
+    const handleSearch=(e)=>{
+        const value=e.target.value;
+        dispatch(searchStation(value));
+        // console.log(value);
+
+    }
 
     const handleAddStation = () => {
         navigate('/addbooks');
@@ -64,7 +72,8 @@ const Home = () => {
                         <tr className='head1Container'>
                             <th colSpan={2} className='searchContainer'>
                                 <input className='searchField' type="search" name="search"
-                                placeholder='Search here...' id="" />
+                                placeholder='Search here...' id=""
+                                onChange={handleSearch} />
                             </th>
                             <th colSpan={3} className='addStationContainer'>
                                 <button style={{marginBottom:0}} onClick={handleAddStation} className='addBtn tableAdd'>{t("Add New Station")}</button>
@@ -73,7 +82,7 @@ const Home = () => {
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>{t("Title")}</th>
+                            <th>{t("Name")}</th>
                             <th>{t("Frequency")}</th>
                             <th colSpan={2}>{t("Action")}</th>
 

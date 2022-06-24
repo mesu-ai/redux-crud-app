@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 
 export const fetchStations=createAsyncThunk("station/fetchStation",async()=>{
@@ -68,6 +69,15 @@ const stationSlice=createSlice({
         error:null
 
     },
+    reducers:{
+        searchStation: (state,action)=>{
+
+            console.log(action.payload);
+            state.stations=state.stations.filter(station=>station?.name.toLowerCase().includes(action.payload.toLowerCase()));
+        }
+
+    },
+
     extraReducers:(builder)=>{
         builder.addCase(fetchStations.pending,(state)=>{
             state.isLoading=true;
@@ -144,5 +154,5 @@ const stationSlice=createSlice({
     }
 });
 
-
+export const {searchStation}=stationSlice.actions;
 export default stationSlice.reducer;

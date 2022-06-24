@@ -15,8 +15,8 @@ const Navbar = () => {
         <div id='navbar'>
             <ul>
                 <Link className='nav-item' to='/home'>Home</Link>
-                <Link className='nav-item' to='/addbooks'>Add Books</Link>
-                <Link className='nav-item' to='/updatebooks'>Update Books</Link>
+                <Link className='nav-item' to='/addbooks'>Add Station</Link>
+                {/* <Link className='nav-item' to='/updatebooks'>Update Station</Link> */}
 
             </ul>
             <div className='languagBtn'>
