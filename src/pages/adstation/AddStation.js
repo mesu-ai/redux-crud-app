@@ -52,6 +52,14 @@ const AddStation = () => {
                     
                     ></input>
                 </div>
+                <div style={{marginTop:'10px'}}>
+                    <label className='inputLabel'>{t("Upload File")}</label>
+                    <input type='file' className='inputField'
+                    name='file'
+                    onBlur={handleOnBlur}
+                    
+                    ></input>
+                </div>
 
                 <button className='submitBtn' type='submit'>{t("Add Station")}</button>
 
